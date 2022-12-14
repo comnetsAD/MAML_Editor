@@ -10,17 +10,17 @@ The models file shows all the database models used and their usual functionaliti
 
 ### ROUTES
 The following are the main endpoints being used in the project:
-1. UploadPage endpoint: This is the main endpoint that is used to create a new page. It takes all the files in the
+1. UploadPage endpoint (CREATE): This is the main endpoint that is used to create a new page. It takes all the files in the
 request and creates a path on the disk to store them. Also it takes the maml doc as well as other contents and
 store them in the database.
 
-2. AdddCurrentPost: This end point is used to save a page. THe saved page can be recreated on the front end.
+2. AdddCurrentPost (CREATE): This end point is used to save a page. THe saved page can be recreated on the front end.
 Just like the uploadPage, it also stores images on disk. Also, it creates a new Post object and save it in 
 the database.
 
-3. UpdateCUrrentPost: This endpoint is used to update an already saved post object.
-4. GetCurrentPOst: This returns a specific post of a particular id and a particular post id.
-5. GetAllPosts: This endpoint returns all the posts of a particular user.
+3. UpdateCUrrentPost (UPDATE): This endpoint is used to update an already saved post object.
+4. GetCurrentPOst (READ): This returns a specific post of a particular id and a particular post id.
+5. GetAllPosts (READ): This endpoint returns all the posts of a particular user.
 
 ### MODELS
 The main models for our database are the 
