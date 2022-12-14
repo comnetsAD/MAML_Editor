@@ -22,7 +22,12 @@ the database.
 4. GetCurrentPOst: This returns a specific post of a particular id and a particular post id.
 5. GetAllPosts: This endpoint returns all the posts of a particular user.
 
-MAIN ISSUE TO LOOK AT IN THE BACKEND
+### MODELS
+The main models for our database are the 
+1. User model
+2. Page model : Represents an individual page of a user.
+3. Post model : Represents a saved post. This model is just for the regeneration of the already saved/incompleted work.
+### MAIN ISSUE TO LOOK AT IN THE BACKEND
 When retrieveing saved images on the disk, we currently retrieve only their paths on the apache server and 
 display them on the frontend. Based on the nature of the frontend, we need to rather send all the files to
 the frontend instead of just their paths. So we need to find ways to either send all the files to the frontend
