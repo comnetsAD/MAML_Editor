@@ -3,12 +3,12 @@ The code above is for the maml editor. For more details about the editor read ab
 This readme describes the functionalities of the code. It also presents some limitations and some issues that
 need to be considered.
 
-##BACKEND
+## BACKEND
 Backend is written in python-flask with sqlalchemy as the database. The main files to look at is the routes.py
 and the models.py. The routes shows all the endpoints used to make requests between backend and frontend.
 The models file shows all the database models used and their usual functionalities.
 
-###ROUTES
+### ROUTES
 The following are the main endpoints being used in the project:
 1. UploadPage endpoint: This is the main endpoint that is used to create a new page. It takes all the files in the
 request and creates a path on the disk to store them. Also it takes the maml doc as well as other contents and
