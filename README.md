@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# MAML_Editor
+The code above is for the maml editor. For more details about the editor read about it in the research paper.
+This readme describes the functionalities of the code. It also presents some limitations and some issues that
+need to be considered.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## BACKEND
+Backend is written in python-flask with sqlalchemy as the database. The main files to look at is the routes.py
+and the models.py. The routes shows all the endpoints used to make requests between backend and frontend.
+The models file shows all the database models used and their usual functionalities.
 
-## Available Scripts
+### ROUTES
+The following are the main endpoints being used in the project:
+1. UploadPage endpoint (CREATE): This is the main endpoint that is used to create a new page. It takes all the files in the
+request and creates a path on the disk to store them. Also it takes the maml doc as well as other contents and
+store them in the database.
 
-In the project directory, you can run:
+2. AdddCurrentPost (CREATE): This end point is used to save a page. THe saved page can be recreated on the front end.
+Just like the uploadPage, it also stores images on disk. Also, it creates a new Post object and save it in 
+the database.
 
-### `npm start`
+3. UpdateCUrrentPost (UPDATE): This endpoint is used to update an already saved post object.
+4. GetCurrentPOst (READ): This returns a specific post of a particular id and a particular post id.
+5. GetAllPosts (READ): This endpoint returns all the posts of a particular user.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### MODELS
+The main models for our database are the 
+1. User model
+2. Page model : Represents an individual page of a user.
+3. Post model : Represents a saved post. This model is just for the regeneration of the already saved/incompleted work.
+### MAIN ISSUE TO LOOK AT IN THE BACKEND
+When retrieveing saved images on the disk, we currently retrieve only their paths on the apache server and 
+display them on the frontend. Based on the nature of the frontend, we need to rather send all the files to
+the frontend instead of just their paths. So we need to find ways to either send all the files to the frontend
+or convert the paths to actual files on the frontend.
